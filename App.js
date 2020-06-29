@@ -3,6 +3,7 @@ import {ActivityIndicator, StyleSheet, Text, View} from 'react-native'
 import {Main} from './components/Main'
 import globalStyles from './Styles'
 import {fetchWithTimeout} from './Networking'
+import {doctorInstance} from './components/Doctor'
 
 const UID = '14fe7a5c53f38084'
 const BASE_URL = 'http://skolkovo.mobimed.ru:3010/'
@@ -64,6 +65,9 @@ export default class App extends Component {
         doctorId: cabinetData.doctor_id,
         isSuccessful: true
       })
+      if (doctorInstance) {
+        doctorInstance.requestDoctor()
+      }
     })
     .catch(() => {
       let e = this.state.errorNum

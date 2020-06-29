@@ -5,6 +5,8 @@ import {fetchWithTimeout} from '../Networking'
 
 const DOCTOR_ROOT = 'getDoctor/'
 
+export let doctorInstance
+
 export class Doctor extends Component {
    
   constructor(props) {
@@ -17,10 +19,11 @@ export class Doctor extends Component {
       isLoading: true,
       doctorId: props.doctorId,
     }
+    doctorInstance = this
     this.baseUrl = props.baseUrl
   }
   
-  componentDidMount = ()  => {
+  requestDoctor = () => {
     fetchWithTimeout(4000, fetch(this.baseUrl + DOCTOR_ROOT + this.state.doctorId)) 
     .then((doctorResponse) => doctorResponse.json())
     .then((doctorData) => {
@@ -32,6 +35,10 @@ export class Doctor extends Component {
         isLoading: false
       })
     })
+  }
+
+  componentDidMount = ()  => {
+    this.requestDoctor()
   }
 
   render() {
