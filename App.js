@@ -5,8 +5,7 @@ import globalStyles from './Styles'
 import {fetchWithTimeout} from './Networking'
 
 const UID = '14fe7a5c53f38084'
-// const BASE_URL = 'http://skolkovo.mobimed.ru:3010/'
-const BASE_URL = 'http://ruslanshah.no-ip.org:3002/'
+const BASE_URL = 'http://skolkovo.mobimed.ru:3010/'
 const DEVICE_ROOT = 'registerDeviceUID/'
 const CABINET_ROOT = 'getCabinet/'
 let interval
